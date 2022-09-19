@@ -1,0 +1,64 @@
+const mongoose = require('mongoose')
+const userSchema = mongoose.Schema({
+    DueDate:{
+        type: Date.now(),
+        required:true
+    },
+    DocNumber:{
+        type:String,
+        required:true
+    },
+    Status:{
+        type:String,
+        required:true
+    },
+    Line:{
+        type:Object,
+        Amount:{
+            type:String,
+            required:true
+        },
+        DetailType:{
+            type:ExpenseDetail,
+            required:true
+        },
+        ExpenseDetail:{
+            Type:Object,
+            Customer:{
+                type:Object,
+                value:String,
+                name:String,
+                ref:{
+                    type:Object,
+                    value:String,
+                    name:String,
+                    required:true
+                },
+                required:true
+            },
+            required:true
+        },
+        Account:{
+            type:Object,
+            value:String,
+            name:String,
+            required:true
+        },
+        LineStatus:{
+            type:String,
+            required:true
+        },
+        Vendedor:{
+            type:Object,
+            value:String,
+            name:String,
+            required:true
+        },
+        TotalAmt:{
+            type:Number,
+            required:true
+        }
+    }
+})
+
+module.exports = mongoose.model('user',userSchema)
