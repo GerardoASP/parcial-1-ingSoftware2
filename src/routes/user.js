@@ -17,4 +17,12 @@ router.get('/users/:id',(req,res)=>{
         .then((data)=>res.json(data))
         .catch((error)=>res.json({message:error}))
 })
-    
+
+// Agregar un nuevo usuario
+router.post('/users',(req,res)=>{
+    const user = userSchema(req.body)
+    user
+    .save()
+    .then((data)=>res.json(data))
+    .catch((error)=>res.json({message:error}))
+}) 
